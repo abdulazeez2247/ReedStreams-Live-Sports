@@ -1,143 +1,497 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./stylechannel.css">
+    <title>Reedstreams - Free Live Sports Streaming</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+    <style>
+        
+    </style>
 <body>
-    <section class="featured-channels">
-        <div class="section-header">
-            <h2 class="section-title">LIVE Channels</h2>
+	 <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <i class="fas fa-play-circle"></i>
+                <span>Reedstreams</span>
+            </div>
+            <button class="mobile-menu-btn" id="closeMenuBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-search search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search matches...">
+        </div>
+        
+        <div class="mobile-menu-links">
+            <a href="./index.html" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="#"><i class="fas fa-fire"></i> Popular</a>
+            <a href="./watch.html"><i class="fas fa-futbol"></i> Football/NFL</a>
+            <a href="./watch.html"><i class="fas fa-baseball-ball"></i> Baseball</a>
+            <a href="./watch.html"><i class="fas fa-basketball-ball"></i> Basketball</a>
+            <a href="./watch.html"><i class="fas fa-hockey-puck"></i> Hockey</a>
+            <a href="./watch.html"><i class="fas fa-table-tennis"></i> Tennis</a>
+            <a href="./watch.html"><i class="fas fa-car"></i> Motorsports</a>
+            <a href="./watch.html"><i class="fas fa-flag-checkered"></i> Formula 1</a>
+            <a href="./watch.html"><i class="fas fa-motorcycle"></i> MotoGP</a>
+            <a href="./watch.html"><i class="fas fa-golf-ball"></i> Golf</a>
+            <a href="./watch.html"><i class="fas fa-football-ball"></i> Rugby</a>
+            <a href="./allsports.html"><i class="fas fa-ellipsis-h"></i> More Sports</a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <button class="mobile-menu-btn" id="openMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="./logo/Header.png" class="logo">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Reedstreams</span>
+                </a>
+            </div>
+            
+            <div class="nav-links">
+                <a href="./allsports.html" class="active">Home</a>
+                <a href="#">Football/NFL</a>
+                <a href="#">Basketball</a>
+                <a href="#">Baseball</a>
+                <a href="#">Hockey</a>
+                <a href="#">Tennis</a>
+                <a href="#">More</a>
+            </div>
+            
+            <div class="user-actions">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Enter team name to search...">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<!-- Featured Channels -->
+<section class="featured-channels">
+    <div class="section-header">
+        <h2 class="section-title">LIVE Channels</h2>
+    </div>
+
+    <div class="channels-grid">
+        <!-- Channel 1 -->
+        <div class="channel-card">
+            <img src="logos/sky-sports.png" alt="SKY Sports Logo" class="channel-logo">
+            <h3 class="channel-name">SKY-SPORTS</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/Sky-Sports.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
         </div>
 
-        <div class="channels-grid">
-            <!-- Channel 1 -->
-            <div class="channel-card">
-                <img src="logos/sky-sports.png" alt="SKY Sports Logo" class="channel-logo">
-                <h3 class="channel-name">SKY-SPORTS</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Sky-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 2 -->
+        <div class="channel-card">
+            <img src="logos/euro-sports.png" alt="Euro Sports Logo" class="channel-logo">
+            <h3 class="channel-name">Euro Sports</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/Euro-Sports.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 2 -->
-            <div class="channel-card">
-                <img src="logos/euro-sports.png" alt="Euro Sports Logo" class="channel-logo">
-                <h3 class="channel-name">Euro Sports</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Euro-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 3 -->
+        <div class="channel-card">
+            <img src="logos/viaplay.png" alt="VIAPLAY Sports Logo" class="channel-logo">
+            <h3 class="channel-name">VIAPLAY SPORTS</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/Viaplay-Sports.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 3 -->
-            <div class="channel-card">
-                <img src="logos/viaplay.png" alt="VIAPLAY Sports Logo" class="channel-logo">
-                <h3 class="channel-name">VIAPLAY SPORTS</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Viaplay-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 4 -->
+        <div class="channel-card">
+            <img src="https://via.placeholder.com/80?text=FOX" alt="Fox 520 HD Logo" class="channel-logo">
+            <h3 class="channel-name">Fox 520 HD</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/Fox-520-HD.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 4 -->
-            <div class="channel-card">
-                <img src="https://via.placeholder.com/80?text=FOX" alt="Fox 520 HD Logo" class="channel-logo">
-                <h3 class="channel-name">Fox 520 HD</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Fox-520-HD.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 5 -->
+        <div class="channel-card">
+            <img src="logos/www.png" alt="WWE Logo" class="channel-logo">
+            <h3 class="channel-name">WWE</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/WWE.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 5 -->
-            <div class="channel-card">
-                <img src="logos/www.png" alt="WWE Logo" class="channel-logo">
-                <h3 class="channel-name">WWE</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/WWE.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 6 -->
+        <div class="channel-card">
+            <img src="logos/ten-sports.png" alt="TEN Sports Logo" class="channel-logo">
+            <h3 class="channel-name">TEN SPORTS</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/Ten-Sports.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 6 -->
-            <div class="channel-card">
-                <img src="logos/ten-sports.png" alt="TEN Sports Logo" class="channel-logo">
-                <h3 class="channel-name">TEN SPORTS</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Ten-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 7 -->
+        <div class="channel-card">
+            <img src="logos/espn-sports.png" alt="ESPN Logo" class="channel-logo">
+            <h3 class="channel-name">ESPN</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/ESPN.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 7 -->
-            <div class="channel-card">
-                <img src="logos/espn-sports.png" alt="ESPN Logo" class="channel-logo">
-                <h3 class="channel-name">ESPN</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/ESPN.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 8 -->
+        <div class="channel-card">
+            <img src="logos/willow.png" alt="Willow Sports Logo" class="channel-logo">
+            <h3 class="channel-name">WILLOW SPORTS</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/Willow-sports.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 8 -->
-            <div class="channel-card">
-                <img src="logos/willow.png" alt="Willow Sports Logo" class="channel-logo">
-                <h3 class="channel-name">WILLOW SPORTS</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Willow-sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 9 -->
+        <div class="channel-card">
+            <img src="logos/a-sports.png" alt="A-Sports Logo" class="channel-logo">
+            <h3 class="channel-name">A-Sports</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/A-Sports.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 9 -->
-            <div class="channel-card">
-                <img src="logos/a-sports.png" alt="A-Sports Logo" class="channel-logo">
-                <h3 class="channel-name">A-Sports</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/A-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
+        <!-- Channel 10 -->
+        <div class="channel-card">
+            <img src="logos/fox-sports.png" alt="Fox Sports Logo" class="channel-logo">
+            <h3 class="channel-name">Fox-Sports</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/Fox-Sports.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
 
-            <!-- Channel 10 -->
-            <div class="channel-card">
-                <img src="logos/fox-sports.png" alt="Fox Sports Logo" class="channel-logo">
-                <h3 class="channel-name">Fox-Sports</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Fox-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 11 -->
-            <div class="channel-card">
-                <img src="logos/star-sports.png" alt="Star Sports Logo" class="channel-logo">
-                <h3 class="channel-name">Star-Sports</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Star-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
+        <!-- Channel 11 -->
+        <div class="channel-card">
+            <img src="logos/star-sports.png" alt="Star Sports Logo" class="channel-logo">
+            <h3 class="channel-name">Star-Sports</h3>
+            <div class="channel-quality">HD 1080p</div>
+            <div class="channel-language">English</div>
+            <button class="btn-tune-in btn-sm" data-url="channels/Star-Sports.html">
+                <i class="fas fa-play"></i> Tune In
+            </button>
+        </div>
+    </div>
+</section>
+     <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">Free Live Sports Streaming</h2>
+            <p class="about-text">
+                There are <span class="highlight">hundreds of sports</span> and millions of people play sport every day all around the world. Even more love to watch sport and here you can watch sport <span class="highlight">free online</span> on Reedstreams.
+            </p>
+            
+            <p class="about-text">
+                Let's start with football. We cover the <span class="highlight">NCAAF</span> so you get to see the next generation. And, of course we cover all the <span class="highlight">NFL</span>. Regular season? Check. Play-offs? Check. Bowls? Check. Superbowl? Check. And it's the same for <span class="highlight">MLB, NHL, NBA</span>, etc, etc. Think of a sport… we cover it. Have you ever wanted to watch a big game but you spent ages looking for a working stream? Or worse, that live sport streaming kept buffering or stopping? The search is over, you have arrived at your destination. <span class="highlight">Reliability and quality. Guaranteed.</span>
+            </p>
+            
+            <p class="about-text">
+                Soccer is played everywhere and now you can watch it anywhere. From north to south and east to west we collect the largest number of soccer streams from every league and competition. Let's do the check test again. <span class="highlight">EPL? Check. La Liga? Check. Champions League? Check.</span> Oh boy, this is going to be a very long check list because we just cover everything.
+            </p>
+            
+            <div class="about-points">
+                <div class="about-point">
+                    <div class="point-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="point-title">Worldwide Coverage</h3>
+                    <p class="point-text">From ball sports to motorsports to combat sports, you can see it all on live streams. You are really going to need more time to watch everything we offer.</p>
+                </div>
+                
+                <div class="about-point">
+                    <div class="point-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="point-title">Updated Schedule</h3>
+                    <p class="point-text">The schedule is always being checked and updated. And most games have multiple links so you have a choice. Want to watch PPVs free? You got it.</p>
+                </div>
+                
+                <div class="about-point">
+                    <div class="point-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="point-title">All Major Events</h3>
+                    <p class="point-text">From the golf Majors to the Grand Prix to the tennis Opens and every competition and cup imaginable. Did we forget rugby? Of course we didn't forget.</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Reedstreams</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Features <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">FAQ <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Contact <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sports</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Football/NFL <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Soccer <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Basketball <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Baseball <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Tennis <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Leagues</h3>
+                <ul class="footer-links">
+                    <li><a href="#">NFL <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">NBA <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Premier League <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">La Liga <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">MLB <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="./Terms.html">Terms of Service <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="/PrivacyPolicy.html">Privacy Policy <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="./DMCA.html">DMCA <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div>
+                © 2025 Reedstreams. All rights reserved. | 
+                <a href="#">Privacy</a> | 
+                <a href="#">Terms</a> | 
+                <a href="#">Sitemap</a>
+            </div>
+            <div class="datetime">
+                <i class="far fa-clock"></i>
+                <span id="clock">Sunday, May 25, 2025 | 03:30:52 PM PKT</span>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            Reedstreams does not host any of the live stream videos playing on this site. All videos are hosted on external streaming sites that are freely available online. Please contact video hosting providers or media posters for takedown or any DMCA complaints.
+        </div>
+    </footer>
+
 </body>
+ <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const overlay = document.getElementById('overlay');
+
+        openMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Enhanced Search Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            setupSearch();
+            setupTuneInButtons();
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+
+        function setupSearch() {
+            const searchInputs = document.querySelectorAll('.search-container input, .mobile-search input');
+            const categoryCards = document.querySelectorAll('.category-card');
+            const channelCards = document.querySelectorAll('.channel-card');
+
+            // Create search results title if it doesn't exist
+            let resultsTitle = document.getElementById('search-results-title');
+            if (!resultsTitle) {
+                resultsTitle = document.createElement('h2');
+                resultsTitle.id = 'search-results-title';
+                resultsTitle.style.display = 'none';
+                document.querySelector('.sports-categories').parentNode.insertBefore(resultsTitle, document.querySelector('.sports-categories'));
+            }
+
+            // Add clear buttons to search inputs
+            searchInputs.forEach(input => {
+                const container = input.closest('.search-container, .mobile-search');
+                const clearBtn = document.createElement('button');
+                clearBtn.innerHTML = '<i class="fas fa-times"></i>';
+                clearBtn.className = 'clear-search';
+                clearBtn.style.display = 'none';
+                container.appendChild(clearBtn);
+
+                input.addEventListener('input', (e) => {
+                    clearBtn.style.display = e.target.value ? 'block' : 'none';
+                    filterContent(e.target.value, categoryCards, channelCards, resultsTitle);
+                });
+
+                clearBtn.addEventListener('click', () => {
+                    input.value = '';
+                    clearBtn.style.display = 'none';
+                    filterContent('', categoryCards, channelCards, resultsTitle);
+                    input.focus();
+                });
+            });
+        }
+
+        function filterContent(query, categoryCards, channelCards, resultsTitle) {
+            const normalizedQuery = query.toLowerCase().trim();
+            let resultCount = 0;
+
+            // Reset all cards and remove highlights
+            categoryCards.forEach(card => {
+                card.style.display = 'block';
+                const nameEl = card.querySelector('.category-name');
+                nameEl.innerHTML = nameEl.textContent;
+            });
+
+            channelCards.forEach(card => {
+                card.style.display = 'block';
+                const nameEl = card.querySelector('.channel-name');
+                nameEl.innerHTML = nameEl.textContent;
+            });
+
+            if (normalizedQuery.length === 0) {
+                resultsTitle.style.display = 'none';
+                return;
+            }
+
+            // Filter and highlight category cards
+            categoryCards.forEach(card => {
+                const nameEl = card.querySelector('.category-name');
+                const name = nameEl.textContent.toLowerCase();
+
+                if (name.includes(normalizedQuery)) {
+                    resultCount++;
+                    highlightText(nameEl, normalizedQuery);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Filter and highlight channel cards
+            channelCards.forEach(card => {
+                const nameEl = card.querySelector('.channel-name');
+                const name = nameEl.textContent.toLowerCase();
+
+                if (name.includes(normalizedQuery)) {
+                    resultCount++;
+                    highlightText(nameEl, normalizedQuery);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update results title
+            if (resultCount > 0) {
+                resultsTitle.style.display = 'block';
+                resultsTitle.innerHTML = `Found ${resultCount} results for "${query}"`;
+                resultsTitle.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                resultsTitle.style.display = 'block';
+                resultsTitle.innerHTML = `No results found for "${query}"`;
+            }
+        }
+
+        function highlightText(element, searchText) {
+            const text = element.textContent;
+            const regex = new RegExp(searchText, 'gi');
+            element.innerHTML = text.replace(regex, match => `<span class="highlight-match">${match}</span>`);
+        }
+
+        function setupTuneInButtons() {
+            document.querySelectorAll('.btn-tune-in').forEach(button => {
+                button.addEventListener('click', () => {
+                    const url = button.getAttribute('data-url');
+                    if (url) {
+                        window.location.href = url;
+                    } else {
+                        console.warn('No data-url attribute found for Tune In button:', button);
+                    }
+                });
+            });
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Karachi',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            const dateTime = now.toLocaleString('en-US', options).replace(',', '');
+            const clockElement = document.getElementById('clock');
+            if (clockElement) {
+                clockElement.textContent = dateTime;
+            }
+        }
+    </script>
+    
 </html>
