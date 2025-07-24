@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reedstreams - DMCA Policy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    
+/* DMCA Section */
+.dmca-section {
+    padding: 5rem 2rem;
+    max-width: 1400px;
+    margin: 80px auto 3rem;
+    background: var(--darker);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.dmca-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 195, 255, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255, 58, 0, 0.05) 0%, transparent 30%);
+    pointer-events: none;
+}
+
+.dmca-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.dmca-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-family: 'Oxanium', 'Arial Black', sans-serif;
+    text-align: center;
+}
+
+.dmca-updated {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.dmca-content h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--light);
+    margin: 2rem 0 1rem;
+    font-family: 'Oxanium', 'Arial Black', sans-serif;
+}
+
+.dmca-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+.dmca-content ul {
+    list-style: disc;
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+</style>
+<body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <i class="fas fa-play-circle"></i>
+                <span>Reedstreams</span>
+            </div>
+            <button class="mobile-menu-btn" id="closeMenuBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-search search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search matches...">
+        </div>
+        
+        <div class="mobile-menu-links">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <a href="#"><i class="fas fa-fire"></i> Popular</a>
+            <a href="#"><i class="fas fa-futbol"></i> Football/NFL</a>
+            <a href="#"><i class="fas fa-baseball-ball"></i> Baseball</a>
+            <a href="#"><i class="fas fa-basketball-ball"></i> Basketball</a>
+            <a href="#"><i class="fas fa-hockey-puck"></i> Hockey</a>
+            <a href="#"><i class="fas fa-table-tennis"></i> Tennis</a>
+            <a href="#"><i class="fas fa-car"></i> Motorsports</a>
+            <a href="#"><i class="fas fa-flag-checkered"></i> Formula 1</a>
+            <a href="#"><i class="fas fa-motorcycle"></i> MotoGP</a>
+            <a href="#"><i class="fas fa-golf-ball"></i> Golf</a>
+            <a href="#"><i class="fas fa-football-ball"></i> Rugby</a>
+            <a href="#"><i class="fas fa-ellipsis-h"></i> More Sports</a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <button class="mobile-menu-btn" id="openMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="index.html" class="logo">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Reedstreams</span>
+                </a>
+            </div>
+            
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#">Football/NFL</a>
+                <a href="#">Basketball</a>
+                <a href="#">Baseball</a>
+                <a href="#">Hockey</a>
+                <a href="#">Tennis</a>
+                <a href="allsports.html">More</a>
+            </div>
+            
+            <div class="user-actions">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Enter team name to search...">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- DMCA Section -->
+    <section class="dmca-section">
+        <div class="dmca-content">
+            <h1 class="dmca-title">DMCA Policy</h1>
+            <p class="dmca-updated">Last Updated: June 12, 2025</p>
+
+            <h2>1. DMCA Compliance</h2>
+            <p>
+                Reedstreams ("we," "us," or "our") respects the intellectual property rights of others and complies with the provisions of the Digital Millennium Copyright Act (DMCA). This DMCA Policy outlines our procedures for handling copyright infringement claims related to our website (the "Service").
+            </p>
+            <p>
+                Reedstreams does not host, upload, or store any streaming content on our servers. Our Service acts solely as an aggregator of links to live sports streams hosted by third-party providers. All videos and streams accessible through our Service are hosted on external platforms that are freely available online. As such, we do not control the content, quality, or availability of these streams.
+            </p>
+
+            <h2>2. Submitting a DMCA Takedown Notice</h2>
+            <p>
+                If you believe that content linked through Reedstreams infringes your copyright, we encourage you to contact the third-party hosting provider directly, as they are responsible for the content. However, if you wish to submit a DMCA takedown notice to Reedstreams to remove a link to allegedly infringing content, please provide a written notification containing the following information, as required by 17 U.S.C. § 512(c)(3):
+            </p>
+            <ul>
+                <li>A physical or electronic signature of the copyright owner or a person authorized to act on their behalf.</li>
+                <li>Identification of the copyrighted work claimed to have been infringed, or, if multiple works are covered, a representative list of such works.</li>
+                <li>Identification of the material claimed to be infringing, including the specific URL(s) of the link(s) on Reedstreams, to enable us to locate the material.</li>
+                <li>Your contact information, including your name, address, telephone number, and email address.</li>
+                <li>A statement that you have a good-faith belief that the use of the material is not authorized by the copyright owner, its agent, or the law.</li>
+                <li>A statement, made under penalty of perjury, that the information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner's behalf.</li>
+            </ul>
+            <p>
+                Please send your DMCA takedown notice to our designated agent at: [insert contact email or link to contact page].
+            </p>
+            <p>
+                Upon receiving a valid DMCA notice, we will promptly remove or disable access to the identified link(s) and notify the third-party provider, if applicable. Please note that we may not have control over the actual content hosted by third-party platforms.
+            </p>
+
+            <h2>3. Counter-Notification</h2>
+            <p>
+                If you believe that a link was removed or disabled as a result of a DMCA takedown notice in error, you may submit a counter-notification in accordance with 17 U.S.C. § 512(g). Your counter-notification must include:
+            </p>
+            <ul>
+                <li>Your physical or electronic signature.</li>
+                <li>Identification of the material that was removed or disabled, including the URL(s) where it appeared on Reedstreams.</li>
+                <li>A statement, under penalty of perjury, that you have a good-faith belief that the material was removed or disabled as a result of mistake or misidentification.</li>
+                <li>Your name, address, telephone number, and email address.</li>
+                <li>A statement that you consent to the jurisdiction of the federal district court for the judicial district in which your address is located (or [insert jurisdiction, e.g., Delaware, USA] if you are outside the U.S.), and that you will accept service of process from the person who submitted the original DMCA notice.</li>
+            </ul>
+            <p>
+                Please send your counter-notification to: [insert contact email or link to contact page].
+            </p>
+            <p>
+                Upon receiving a valid counter-notification, we may restore the removed link(s) within 10-14 business days, unless the original complainant notifies us of a court action seeking to restrain the restoration.
+            </p>
+
+            <h2>4. Repeat Infringers</h2>
+            <p>
+                Reedstreams reserves the right to terminate access to our Service for users or third-party providers who are repeat infringers of copyright, as determined in our sole discretion.
+            </p>
+
+            <h2>5. Limitations</h2>
+            <p>
+                Reedstreams is not responsible for the content hosted by third-party providers. We act only as a conduit for linking to external streams and cannot guarantee the legality or accuracy of such content. Any disputes regarding the content itself should be directed to the hosting provider.
+            </p>
+
+            <h2>6. Contact Us</h2>
+            <p>
+                For DMCA notices, counter-notifications, or questions about this policy, please contact our designated DMCA agent at: [insert contact email or link to contact page].
+            </p>
+
+            <p class="dmca-disclaimer">
+                <strong>Disclaimer:</strong> Reedstreams does not host any streaming content. All streams are provided by external third-party services. We are not responsible for the content, quality, or legality of the streams linked on our platform. For copyright concerns, please contact the third-party hosting provider directly or submit a DMCA notice as outlined above.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Reedstreams</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Features <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">FAQ <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Contact <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Sports</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Football/NFL <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Soccer <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Basketball <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Baseball <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Tennis <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Leagues</h3>
+                <ul class="footer-links">
+                    <li><a href="#">NFL <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">NBA <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Premier League <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">La Liga <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">MLB <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="terms-of-service.html">Terms of Service <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#">Cookie Policy <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="dmca.html">DMCA <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div>
+                © 2025 Reedstreams. All rights reserved. | 
+                <a href="privacy-policy.html">Privacy</a> | 
+                <a href="terms-of-service.html">Terms</a> | 
+                <a href="#">Sitemap</a>
+            </div>
+            <div class="datetime">
+                <i class="far fa-clock"></i>
+                <span id="clock">Thursday, June 12, 2025 | 11:49:00 AM PKT</span>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            Reedstreams does not host any of the live stream videos playing on this site. All videos are hosted on external streaming sites that are freely available online. Please contact video hosting providers or media posters for takedown or any DMCA complaints.
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const overlay = document.getElementById('overlay');
+
+        openMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Enhanced Search Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            setupSearch();
+            setupTuneInButtons();
+            updateClock();
+            setInterval(updateClock, 1000);
+        });
+
+        function setupSearch() {
+            const searchInputs = document.querySelectorAll('.search-container input, .mobile-search input');
+            const categoryCards = document.querySelectorAll('.category-card');
+            const channelCards = document.querySelectorAll('.channel-card');
+
+            // Create search results title if it doesn't exist
+            let resultsTitle = document.getElementById('search-results-title');
+            if (!resultsTitle) {
+                resultsTitle = document.createElement('h2');
+                resultsTitle.id = 'search-results-title';
+                resultsTitle.style.display = 'none';
+                const dmcaSection = document.querySelector('.dmca-section');
+                if (dmcaSection) {
+                    dmcaSection.parentNode.insertBefore(resultsTitle, dmcaSection);
+                }
+            }
+
+            // Add clear buttons to search inputs
+            searchInputs.forEach(input => {
+                const container = input.closest('.search-container, .mobile-search');
+                const clearBtn = document.createElement('button');
+                clearBtn.innerHTML = '<i class="fas fa-times"></i>';
+                clearBtn.className = 'clear-search';
+                clearBtn.style.display = 'none';
+                container.appendChild(clearBtn);
+
+                input.addEventListener('input', (e) => {
+                    clearBtn.style.display = e.target.value ? 'block' : 'none';
+                    filterContent(e.target.value, categoryCards, channelCards, resultsTitle);
+                });
+
+                clearBtn.addEventListener('click', () => {
+                    input.value = '';
+                    clearBtn.style.display = 'none';
+                    filterContent('', categoryCards, channelCards, resultsTitle);
+                    input.focus();
+                });
+            });
+        }
+
+        function filterContent(query, categoryCards, channelCards, resultsTitle) {
+            const normalizedQuery = query.toLowerCase().trim();
+            let resultCount = 0;
+
+            // Reset all cards and remove highlights
+            categoryCards.forEach(card => {
+                card.style.display = 'block';
+                const nameEl = card.querySelector('.category-name');
+                if (nameEl) nameEl.innerHTML = nameEl.textContent;
+            });
+
+            channelCards.forEach(card => {
+                card.style.display = 'block';
+                const nameEl = card.querySelector('.channel-name');
+                if (nameEl) nameEl.innerHTML = nameEl.textContent;
+            });
+
+            if (normalizedQuery.length === 0) {
+                resultsTitle.style.display = 'none';
+                return;
+            }
+
+            // Since this is the DMCA page, no cards are present, show no results
+            resultsTitle.style.display = 'block';
+            resultsTitle.innerHTML = `No results found for "${query}"`;
+        }
+
+        function highlightText(element, searchText) {
+            const text = element.textContent;
+            const regex = new RegExp(searchText, 'gi');
+            element.innerHTML = text.replace(regex, match => `<span class="highlight-match">${match}</span>`);
+        }
+
+        function setupTuneInButtons() {
+            document.querySelectorAll('.btn-tune-in').forEach(button => {
+                button.addEventListener('click', () => {
+                    const url = button.getAttribute('data-url');
+                    if (url) {
+                        window.location.href = url;
+                    } else {
+                        console.warn('No data-url attribute found for Tune In button:', button);
+                    }
+                });
+            });
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Karachi',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            const dateTime = now.toLocaleString('en-US', options).replace(',', '');
+            const clockElement = document.getElementById('clock');
+            if (clockElement) {
+                clockElement.textContent = dateTime;
+            }
+        }
+    </script>
+</body>
+</html>
