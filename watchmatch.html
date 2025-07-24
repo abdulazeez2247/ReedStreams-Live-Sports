@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watch Match</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body { margin: 0; background: #000; color: #fff; }
+    #player-container { position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }
+    video { width: 100%; height: 100%; background: #000; }
+    .match-title { position: absolute; top: 10px; left: 20px; font-size: 18px; z-index: 10; }
+  </style>
+</head>
+<body>
+  <div id="player-container">
+    <div class="match-title" id="match-title"></div>
+    <video id="video" controls autoplay></video>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const stream = urlParams.get('stream');
+    const home = urlParams.get('home') || 'Team A';
+    const away = urlParams.get('away') || 'Team B';
+
+    document.getElementById('match-title').innerText = `${home} vs ${away}`;
+
+    const video = document.getElementById('video');
+    const streamUrl = `http://localhost:7000/api/matches/proxy-stream?url=${encodeURIComponent(stream)}`;
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(streamUrl);
+      hls.attachMedia(video);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = streamUrl;
+    } else {
+      alert('HLS not supported in this browser');
+    }
+  </script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</body>
+</html>

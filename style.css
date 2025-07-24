@@ -112,6 +112,157 @@ a {
   font-size: 1.5rem;
   cursor: pointer;
 }
+.watch-button {
+  background-color: #e53935;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+  display: inline-block;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.watch-button:hover {
+  background-color: #c62828;
+  transform: translateY(-2px);
+}
+
+.watch-button:active {
+  background-color: #b71c1c;
+  transform: translateY(0);
+}
+.video-player-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.video-player {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.playing-match-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+.goal-scorers {
+  background: #f9f9f9;
+  border-left: 4px solid #3f51b5;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+.goal-scorers-list {
+  list-style: disc inside;
+  padding-left: 10px;
+  margin-top: 6px;
+}
+ .matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.match-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.match-card:hover {
+  transform: translateY(-4px);
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.competition-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.match-status {
+  background-color: #e53935;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.team-names {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.vs-separator {
+  color: #888;
+  margin: 0 5px;
+}
+
+.score, .start-time {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+.category-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.category-icon {
+  font-size: 2.5rem;
+  color: #3f51b5;
+  margin-bottom: 10px;
+}
+
+.category-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+.category-matches {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+
 
 .user-actions {
   display: flex;
