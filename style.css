@@ -127,7 +127,18 @@ a {
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+.categories-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
 
+.sports-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
 .watch-button:hover {
   background-color: #c62828;
   transform: translateY(-2px);
@@ -154,7 +165,7 @@ a {
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: #333;
+  color: #f9f9f9;
 }
 .goal-scorers {
   background: #f9f9f9;
@@ -172,9 +183,10 @@ a {
 }
  .matches-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
+  padding: 1rem;
 }
 
 .match-card {
@@ -200,7 +212,7 @@ a {
 .competition-name {
   font-size: 1rem;
   font-weight: bold;
-  color: #333;
+  color: #f9f9f9;
 }
 
 .match-status {
@@ -219,13 +231,13 @@ a {
 }
 
 .vs-separator {
-  color: #888;
+  color: #f9f9f9;
   margin: 0 5px;
 }
 
 .score, .start-time {
   font-size: 0.95rem;
-  color: #444;
+  color: #f9f9f9;
   margin-bottom: 4px;
 }
 
@@ -259,7 +271,7 @@ a {
 
 .category-matches {
   font-size: 0.95rem;
-  color: #555;
+  color: #f9f9f9;
 }
 
 
