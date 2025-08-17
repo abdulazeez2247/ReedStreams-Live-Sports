@@ -9,8 +9,9 @@ const sportIcons = {
 let currentLoadedMatches = [];
 
 function capitalize(text) {
+  if (!text) return "";
   return text
-    .split("-")
+    .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
@@ -29,7 +30,7 @@ async function loadSports() {
       const sport = match.sport_name?.toLowerCase();
       if (allowedSports.includes(sport)) {
         grouped[sport] = grouped[sport] || [];
-        grouped[sport].push(match);
+        if (match.match_status === "LIVE") grouped[sport].push(match);
       }
     });
     allowedSports.forEach((sport) => {
@@ -39,14 +40,15 @@ async function loadSports() {
       const card = document.createElement("div");
       card.className = "category-card";
       card.innerHTML = `
-             <div class="category-icon"><i class="${iconClass}"></i></div>
-             <h3 class="category-name">${capitalize(sport)}</h3>
-             <div class="category-matches">${liveMatchCount} Live Matches</div>
-         `;
+        <div class="category-icon"><i class="${iconClass}"></i></div>
+        <h3 class="category-name">${capitalize(sport)}</h3>
+        <div class="category-matches">${liveMatchCount} Live Matches</div>
+      `;
       card.addEventListener("click", () => showMatches(sport, matches));
       container.appendChild(card);
     });
   } catch (err) {
+    console.error("Error loading sports:", err);
     container.innerHTML = "Failed to load sports.";
   }
 }
@@ -54,7 +56,7 @@ async function loadSports() {
 function showMatches(sport, matches) {
   const matchContainer = document.querySelector("#match-list");
   matchContainer.innerHTML = `<h2>${capitalize(sport)} - Live Matches</h2>`;
-
+  
   if (matches.length === 0) {
     matchContainer.innerHTML += `<p class="no-matches-message">No live matches currently for ${capitalize(sport)}.</p>`;
     return;
@@ -64,30 +66,72 @@ function showMatches(sport, matches) {
   matchesGrid.className = "matches-grid";
   matchContainer.appendChild(matchesGrid);
 
+  
+  const formatTimeDisplay = (time) => {
+    if (!time) return "N/A";
+    
+    
+    if (typeof time === "string" && time !== "N/A" && !/^\d+$/.test(time)) {
+      return time;
+    }
+    
+    
+    const timestamp = typeof time === "string" ? parseInt(time) : time;
+    if (!isNaN(timestamp)) {
+      const date = new Date(timestamp * 1000);
+      return isNaN(date.getTime()) ? "N/A" : date.toLocaleString();
+    }
+    
+    return "N/A";
+  };
+
   matches.forEach((match) => {
-    const statusClass = match.match_status?.toLowerCase() || 'live';
-    const statusText = match.match_status?.toUpperCase() || 'LIVE';
-    const streamUrl = match.playurl2 || match.playurl1;
-
-    // The change is here: check if the status is "LIVE"
-    const watchButtonHtml = (streamUrl && match.match_status === "LIVE") ? 
-      `<a href="match.html?matchId=${match.match_id}&sportName=${match.sport_name}&streamUrl=${encodeURIComponent(streamUrl)}" class="watch-link">Watch Now</a>` 
-      : "";
-
+    const statusText = match.match_status || "N/A";
+    const statusClass = statusText.toLowerCase();
+    const formattedTime = formatTimeDisplay(match.match_time || match.start_time);
+    
     const matchCard = document.createElement("div");
     matchCard.className = "match-card";
     matchCard.innerHTML = `
       <div class="match-header">
-        <h4 class="competition-name">${match.competition_name || "Unknown Competition"}</h4>
+        <h4 class="competition-name">${match.competition_name || "N/A"}</h4>
         <span class="live-status ${statusClass}">${statusText}</span>
       </div>
-      <p class="team-names">${match.home_team || "TBD"} vs ${match.away_team || "TBD"}</p>
-      <p class="start-time">Start Time: ${new Date(match.match_time * 1000).toLocaleString()}</p>
-      ${watchButtonHtml}
+      <p class="team-names">${match.home_name || "Home"} vs ${match.away_name || "Away"}</p>
+      <p class="start-time">Start Time: ${formattedTime}</p>
+      <button class="watch-link" 
+          data-match-id="${match.match_id || ""}"
+          data-stream-url="${encodeURIComponent(match.playurl2 || match.playurl1 || "")}"
+          data-home-name="${match.home_name || ""}"
+          data-away-name="${match.away_name || ""}"
+          data-competition-name="${match.competition_name || ""}"
+          data-start-time="${match.match_time || ""}"
+      >Watch Now</button>
     `;
     matchesGrid.appendChild(matchCard);
   });
-}
 
+  
+  matchesGrid.addEventListener("click", (e) => {
+    const watchBtn = e.target.closest(".watch-link");
+    if (!watchBtn) return;
+
+    const streamUrl = decodeURIComponent(watchBtn.getAttribute("data-stream-url"));
+    if (!streamUrl || streamUrl === "null" || streamUrl === "undefined") {
+      alert("Stream URL not available.");
+      return;
+    }
+
+    const params = new URLSearchParams({
+      streamUrl: watchBtn.getAttribute("data-stream-url"),
+      home_name: watchBtn.getAttribute("data-home-name"),
+      away_name: watchBtn.getAttribute("data-away-name"),
+      competition_name: watchBtn.getAttribute("data-competition-name"),
+      start_time: watchBtn.getAttribute("data-start-time")
+    });
+
+    window.location.href = `match.html?${params.toString()}`;
+  });
+}
 
 loadSports();

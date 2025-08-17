@@ -1,73 +1,141 @@
 const BASE_URL = "http://localhost:7000/api/matches";
 
-function formatMatchTime(tspTime) {
-  if (!tspTime) return "N/A";
-  return new Date(tspTime).toLocaleString(undefined, {
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+function formatMatchTime(timestamp) {
+  if (!timestamp) return null;
+
+  try {
+    if (typeof timestamp === 'string' && timestamp.includes('T')) {
+      const date = new Date(timestamp);
+      if (!isNaN(date.getTime())) {
+        return date.toLocaleString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+        });
+      }
+    }
+
+    if (typeof timestamp === 'number' || /^\d+$/.test(timestamp)) {
+      const date = new Date(parseInt(timestamp) * 1000);
+      if (!isNaN(date.getTime())) {
+        return date.toLocaleString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+        });
+      }
+    }
+
+    return null;
+  } catch (e) {
+    console.error("Failed to format time:", e);
+    return null;
+  }
 }
 
 function renderMatchDetails(matchData) {
   const detailsContainer = document.getElementById("match-details-container");
   const titleElement = document.getElementById("match-title");
 
-  titleElement.textContent = `${matchData.homeTeam || "Home"} vs ${matchData.awayTeam || "Away"}`;
+  if (!detailsContainer || !titleElement) {
+    console.error("Required DOM elements not found");
+    return;
+  }
 
-  detailsContainer.innerHTML = `
+  titleElement.textContent = `${matchData.home_name || "Home"} vs ${matchData.away_name || "Away"}`;
+
+  const startTimeFormatted = formatMatchTime(matchData.match_time || matchData.start_time);
+
+  let detailsHtml = `
     <div class="match-diary-header">
-      <h4>${matchData.competition || "Live Match"}</h4>
-      <span class="match-status">${matchData.status || "Live"}</span>
+      <h4>${matchData.competition_name || "N/A"}</h4>
+      <span class="match-status ${(matchData.status || "Live").toLowerCase()}">
+        ${matchData.status || "Live"}
+      </span>
     </div>
     <p class="team-names">
-      <strong>${matchData.homeTeam || "Home"}</strong>
+      <strong>${matchData.home_name || "Home"}</strong>
       <span class="vs-separator">vs</span>
-      <strong>${matchData.awayTeam || "Away"}</strong>
+      <strong>${matchData.away_name || "Away"}</strong>
     </p>
-    <p class="start-time">Start Time: ${formatMatchTime(matchData.matchTime)}</p>
   `;
+
+  if (startTimeFormatted) {
+    detailsHtml += `<p class="start-time">Start Time: ${startTimeFormatted}</p>`;
+  }
+
+  detailsContainer.innerHTML = detailsHtml;
 }
 
 function playStream(streamUrl, videoElement) {
-  const proxiedUrl = `${BASE_URL}/proxy-stream?url=${streamUrl}`;
+  if (!streamUrl || !videoElement) {
+    console.error("Missing stream URL or video element");
+    return;
+  }
+
+  const encodedUrl = encodeURIComponent(streamUrl);
+  const proxiedUrl = `${BASE_URL}/proxy-stream?url=${encodedUrl}`;
 
   if (Hls.isSupported()) {
     const hls = new Hls();
     hls.loadSource(proxiedUrl);
     hls.attachMedia(videoElement);
-    hls.on(Hls.Events.MANIFEST_PARSED, () => videoElement.play());
+    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      videoElement.play().catch(e => console.error("Playback failed:", e));
+    });
+    hls.on(Hls.Events.ERROR, (event, data) => {
+      console.error("HLS Error:", data);
+    });
     window.hlsInstance = hls;
   } else if (videoElement.canPlayType("application/vnd.apple.mpegurl")) {
     videoElement.src = proxiedUrl;
-    videoElement.addEventListener("loadedmetadata", () => videoElement.play());
+    videoElement.addEventListener("loadedmetadata", () => {
+      videoElement.play().catch(e => console.error("Playback failed:", e));
+    });
   } else {
     videoElement.style.display = "none";
-    document.querySelector(".container").innerHTML +=
-      '<p class="error-message">Your browser does not support HLS streaming.</p>';
+    const errorElement = document.createElement('p');
+    errorElement.className = "error-message";
+    errorElement.textContent = "Your browser does not support HLS streaming.";
+    document.querySelector(".container")?.appendChild(errorElement);
   }
 }
 
 function initMatchPage() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const streamUrl = urlParams.get("streamUrl");
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const streamUrl = decodeURIComponent(urlParams.get("streamUrl") || "");
+    const home_name = decodeURIComponent(urlParams.get("home_name") || "");
+    const away_name = decodeURIComponent(urlParams.get("away_name") || "");
+    const competition_name = decodeURIComponent(urlParams.get("competition_name") || "");
+    const match_time = urlParams.get("start_time");
 
-  if (!streamUrl) {
-    document.getElementById("match-title").textContent = "Error: Stream URL missing";
-    return;
+    if (!streamUrl) {
+      const errorElement = document.getElementById("match-title") || document.createElement('h1');
+      errorElement.textContent = "Error: Stream URL missing";
+      if (!errorElement.parentNode) {
+        document.body.prepend(errorElement);
+      }
+      return;
+    }
+
+    const matchData = {
+      home_name,
+      away_name,
+      competition_name,
+      match_time,
+      status: "Live"
+    };
+
+    renderMatchDetails(matchData);
+    playStream(streamUrl, document.getElementById("video-player"));
+  } catch (e) {
+    console.error("Initialization error:", e);
   }
-
-  const matchData = {
-    competition: urlParams.get("competition"),
-    homeTeam: urlParams.get("homeTeam"),
-    awayTeam: urlParams.get("awayTeam"),
-    matchTime: urlParams.get("matchTime"),
-    status: "Live" // Default status
-  };
-
-  renderMatchDetails(matchData);
-  playStream(streamUrl, document.getElementById("video-player"));
 }
 
 document.addEventListener("DOMContentLoaded", initMatchPage);
