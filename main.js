@@ -20,12 +20,21 @@ function capitalize(text) {
 async function loadSports() {
   const container = document.querySelector("#sports-container");
   container.innerHTML = "Loading...";
+
   try {
+    console.log("Fetching streams from:", `${BASE_URL}/streams`);
     const res = await fetch(`${BASE_URL}/streams`);
+    console.log("Response status:", res.status);
+
     const response = await res.json();
+    console.log("Raw API response:", response);
+
     const data = Array.isArray(response.data?.streams) ? response.data.streams : [];
+    console.log("Extracted streams:", data);
+
     currentLoadedMatches = data;
     container.innerHTML = "";
+
     const grouped = {};
     data.forEach((match) => {
       const sport = match.sport_name?.toLowerCase();
@@ -34,8 +43,13 @@ async function loadSports() {
         if (match.match_status === "LIVE") grouped[sport].push(match);
       }
     });
+
+    console.log("Grouped matches by sport:", grouped);
+
     allowedSports.forEach((sport) => {
       const matches = grouped[sport] || [];
+      console.log(`Sport: ${sport}, Live Matches: ${matches.length}`);
+
       const liveMatchCount = matches.length;
       const iconClass = sportIcons[sport] || "fas fa-trophy";
       const card = document.createElement("div");
@@ -57,7 +71,9 @@ async function loadSports() {
 function showMatches(sport, matches) {
   const matchContainer = document.querySelector("#match-list");
   matchContainer.innerHTML = `<h2>${capitalize(sport)} - Live Matches</h2>`;
-  
+
+  console.log(`Showing matches for ${sport}:`, matches);
+
   if (matches.length === 0) {
     matchContainer.innerHTML += `<p class="no-matches-message">No live matches currently for ${capitalize(sport)}.</p>`;
     return;
@@ -67,30 +83,29 @@ function showMatches(sport, matches) {
   matchesGrid.className = "matches-grid";
   matchContainer.appendChild(matchesGrid);
 
-  
   const formatTimeDisplay = (time) => {
     if (!time) return "N/A";
-    
-    
+
     if (typeof time === "string" && time !== "N/A" && !/^\d+$/.test(time)) {
       return time;
     }
-    
-    
+
     const timestamp = typeof time === "string" ? parseInt(time) : time;
     if (!isNaN(timestamp)) {
       const date = new Date(timestamp * 1000);
       return isNaN(date.getTime()) ? "N/A" : date.toLocaleString();
     }
-    
+
     return "N/A";
   };
 
   matches.forEach((match) => {
+    console.log("Rendering match card:", match);
+
     const statusText = match.match_status || "N/A";
     const statusClass = statusText.toLowerCase();
     const formattedTime = formatTimeDisplay(match.match_time || match.start_time);
-    
+
     const matchCard = document.createElement("div");
     matchCard.className = "match-card";
     matchCard.innerHTML = `
@@ -112,12 +127,13 @@ function showMatches(sport, matches) {
     matchesGrid.appendChild(matchCard);
   });
 
-  
   matchesGrid.addEventListener("click", (e) => {
     const watchBtn = e.target.closest(".watch-link");
     if (!watchBtn) return;
 
     const streamUrl = decodeURIComponent(watchBtn.getAttribute("data-stream-url"));
+    console.log("Watch button clicked, stream URL:", streamUrl);
+
     if (!streamUrl || streamUrl === "null" || streamUrl === "undefined") {
       alert("Stream URL not available.");
       return;
@@ -131,6 +147,7 @@ function showMatches(sport, matches) {
       start_time: watchBtn.getAttribute("data-start-time")
     });
 
+    console.log("Redirecting to match.html with params:", params.toString());
     window.location.href = `match.html?${params.toString()}`;
   });
 }
