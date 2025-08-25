@@ -189,65 +189,68 @@ a {
   margin-top: 6px;
 }
 
-.matches-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-  padding: 1rem;
-}
-
 .match-card {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 1.2rem;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  background: #0d253f;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
   position: relative;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  color: #fff;
 }
 
 .match-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 2rem;
 }
 
 .match-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .competition-name {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  color: #f9f9f9;
+  color: #fff;
 }
 
 .match-status {
-  background-color: #e53935;
+  background-color: #28a745;
   color: white;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
   text-transform: uppercase;
+  font-weight: bold;
 }
 
 .team-names {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  margin: 10px 0;
+  margin: 12px 0;
+  color: #f1f1f1;
+}
+
+.start-time {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  margin-bottom: 8px;
 }
 
 .vs-separator {
   color: #f9f9f9;
   margin: 0 5px;
-}
-
-.score,
-.start-time {
-  font-size: 0.95rem;
-  color: #f9f9f9;
-  margin-bottom: 4px;
 }
 
 .category-card {
@@ -283,13 +286,15 @@ body {
   background-color: #0d1117;
   color: #c9d1d9;
   margin: 0;
-  padding: 20px;
+  padding: 30px;
+
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  padding: 20px;
 }
 
 .watch-link {
@@ -325,23 +330,29 @@ body {
 
 .video-player {
   width: 100%;
-  height: auto;
-  max-height: 900px;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
   background-color: black;
   border-radius: 8px;
   margin: 0 auto;
   display: block;
+  object-fit: cover;
+}
+
+
+.video-player-section {
+  margin-top: 2rem;
+  text-align: center;
 }
 
 .match-details-container {
-  margin-top: 20px auto;
+  margin: 20px auto;
   padding: 20px;
   background-color: #1a1e24;
   border-radius: 8px;
   max-width: 900px;
   text-align: left;
 }
-
 
 .info-message {
   color: #a4a4a4;

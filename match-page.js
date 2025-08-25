@@ -5,35 +5,30 @@ function formatMatchTime(timestamp) {
   if (!timestamp) return null;
 
   try {
-    if (typeof timestamp === 'string' && timestamp.includes('T')) {
-      const date = new Date(timestamp);
-      if (!isNaN(date.getTime())) {
-        return date.toLocaleString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true,
-        });
-      }
+    if (/^\d+$/.test(timestamp)) {
+      const date = new Date(parseInt(timestamp) * 1000);
+      return date.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      });
     }
 
-    if (typeof timestamp === 'number' || /^\d+$/.test(timestamp)) {
-      const date = new Date(parseInt(timestamp) * 1000);
-      if (!isNaN(date.getTime())) {
-        return date.toLocaleString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true,
-        });
-      }
+    const date = new Date(timestamp);
+    if (!isNaN(date)) {
+      return date.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      });
     }
 
     return null;
-  } catch (e) {
-    console.error("Failed to format time:", e);
+  } catch {
     return null;
   }
 }
@@ -42,10 +37,7 @@ function renderMatchDetails(matchData) {
   const detailsContainer = document.getElementById("match-details-container");
   const titleElement = document.getElementById("match-title");
 
-  if (!detailsContainer || !titleElement) {
-    console.error("Required DOM elements not found");
-    return;
-  }
+  if (!detailsContainer || !titleElement) return;
 
   titleElement.textContent = `${matchData.home_name || "Home"} vs ${matchData.away_name || "Away"}`;
 
@@ -66,17 +58,14 @@ function renderMatchDetails(matchData) {
   `;
 
   if (startTimeFormatted) {
-    detailsHtml += `<p class="start-time">Start Time: ${startTimeFormatted}</p>`;
+    detailsHtml += `<p class="start-time">Started: ${startTimeFormatted}</p>`;
   }
 
   detailsContainer.innerHTML = detailsHtml;
 }
 
 function playStream(streamUrl, videoElement) {
-  if (!streamUrl || !videoElement) {
-    console.error("Missing stream URL or video element");
-    return;
-  }
+  if (!streamUrl || !videoElement) return;
 
   const encodedUrl = encodeURIComponent(streamUrl);
   const proxiedUrl = `${BASE_URL}/proxy-stream?url=${encodedUrl}`;
