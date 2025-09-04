@@ -28,19 +28,11 @@
         </div>
         
         <div class="mobile-menu-links">
-            <a href="" class="active"><i class="fas fa-home"></i> Home</a>
-            <a href="#"><i class="fas fa-fire"></i> Popular</a>
-            <a href=""><i class="fas fa-futbol"></i> Football/NFL</a>
-            <a href="#"><i class="fas fa-baseball-ball"></i> Baseball</a>
-            <a href="#"><i class="fas fa-basketball-ball"></i> Basketball</a>
-            <a href="#"><i class="fas fa-hockey-puck"></i> Hockey</a>
-            <a href="#"><i class="fas fa-table-tennis"></i> Tennis</a>
-            <a href="#"><i class="fas fa-car"></i> Motorsports</a>
-            <a href="#"><i class="fas fa-flag-checkered"></i> Formula 1</a>
-            <a href="#"><i class="fas fa-motorcycle"></i> MotoGP</a>
-            <a href="#"><i class="fas fa-golf-ball"></i> Golf</a>
-            <a href="#"><i class="fas fa-football-ball"></i> Rugby</a>
-            <a href="#"><i class="fas fa-ellipsis-h"></i> More Sports</a>
+            <a href="index.html" style="text-decoration: underline;" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="#sports-container"><i class="fas fa-futbol"></i> Football/NFL</a>
+            <a href="#sports-container"><i class="fas fa-baseball-ball"></i> Baseball</a>
+            <a href="channels/Sky-Sports-Cricket.html"><i class="fas fa-table-tennis"></i> Cricekt</a>
+            <a href="channels/Sky-Sports-Tennis.html"><i class="fas fa-flag-checkered"></i> Formula 1</a>
         </div>
     </div>
     
@@ -60,24 +52,21 @@
             </div>
             
             <div class="nav-links">
-                <a href="./index.html" class="active">Home</a>
-                <a href="#">Football/NFL</a>
-                <a href="#">Basketball</a>
-                <a href="#">Baseball</a>
-                <a href="#">Hockey</a>
-                <a href="#">Tennis</a>
-                <a href="allsports.html">More</a>
+                <a href="./index.html" class="active"> Home</a>
+                <a href="#sports-container"> Football/NFL</a>
+                <a href="#sports-container"> Baseball</a>
+                <a href="channels/Sky-Sports-Cricket.html">Cricket</a>
+                <a href="channels/Sky-Sports-Tennis.html"> F1</a>
             </div>
             
             <div class="user-actions">
                 <div class="search-container">
-                    <i class="fas fa-search"></i>
+                     <i class="fas fa-search"></i>
                     <input type="text" placeholder="Enter team name to search...">
                 </div>
             </div>
         </nav>
     </header>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -98,10 +87,6 @@
     <section class="sports-categories">
         <div class="section-header">
             <h2 class="section-title">Popular Sports</h2>
-            <a href="allsports.html" class="section-link">
-                View All Sports
-                <i class="fas fa-arrow-right"></i>
-            </a>
         </div>
         <div id="sports-container" class="sports-grid"></div>
         <div id="match-list" class="match-list"></div>
@@ -109,136 +94,59 @@
 
     </section>
 
-    <!-- Featured Channels -->
-    <section class="featured-channels">
-        <div class="section-header">
-            <h2 class="section-title">LIVE Channels</h2>
-            <a href="allchannels.html" class="section-link">
-                View All Channels
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <div class="channels-grid">
-            <!-- Channel 1 -->
-            <div class="channel-card">
-                <img src="logos/sky-sports.png" alt="SKY Sports Logo" class="channel-logo">
-                <h3 class="channel-name">SKY-SPORTS</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Sky-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
+        <!-- Sports Streaming Categories -->
+    <section class="sports-categories">
+        <div class="sports-grid">
+            <!-- Cricket Card -->
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-baseball-ball"></i>
+                </div>
+                <h3 class="category-name">Cricket</h3>
+                <p class="category-matches">International matches</p>
+                <a href="channels/Sky-Sports-Cricket.html" class="btn btn-primary btn-sm">
+                    <i class="fas fa-play"></i>
+                    Watch Now
+                </a>
             </div>
 
-            <!-- Channel 2 -->
-            <div class="channel-card">
-                <img src="logos/euro-sports.png" alt="Euro Sports Logo" class="channel-logo">
-                <h3 class="channel-name">Euro Sports</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Euro-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
+            <!-- Tennis Card -->
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-table-tennis"></i>
+                </div>
+                <h3 class="category-name">Tennis</h3>
+                <p class="category-matches">Grand Slam events</p>
+                <a href="channels/Sky-Sports-F1.html" class="btn btn-primary btn-sm">
+                    <i class="fas fa-play"></i>
+                    Watch Now
+                </a>
+            </div>
+            
+            <!-- Formula 1 Card -->
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-flag-checkered"></i>
+                </div>
+                <h3 class="category-name">Formula 1</h3>
+                <p class="category-matches">Races & Qualifying</p>
+                <a href="channels/Sky-Sports-Tennis.html" class="btn btn-primary btn-sm">
+                    <i class="fas fa-play"></i>
+                    Watch Now
+                </a>
             </div>
 
-            <!-- Channel 3 -->
-            <div class="channel-card">
-                <img src="logos/viaplay.png" alt="VIAPLAY Sports Logo" class="channel-logo">
-                <h3 class="channel-name">VIAPLAY SPORTS</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm"  data-url="channels/Viaplay-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 4 -->
-            <div class="channel-card">
-                <!-- <img src="https://via.placeholder.com/80x80.png?text=FOX" alt="Fox 520 HD Logo" class="channel-logo"> -->
-                <h3 class="channel-name">Fox 520 HD</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Fox-520-HD.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 5 -->
-            <div class="channel-card">
-                <img src="logos/www.png" alt="WWE Logo" class="channel-logo">
-                <h3 class="channel-name">WWE</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/WWE.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 6 -->
-            <div class="channel-card">
-                <img src="logos/ten-sports.png" alt="TEN Sports Logo" class="channel-logo">
-                <h3 class="channel-name">TEN SPORTS</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Ten-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 7 -->
-            <div class="channel-card">
-                <img src="logos/espn-sports.png" alt="ESPN Logo" class="channel-logo">
-                <h3 class="channel-name">ESPN</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/ESPN.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 8 -->
-            <div class="channel-card">
-                <img src="logos/willow.png" alt="Willow Sports Logo" class="channel-logo">
-                <h3 class="channel-name">WILLOW SPORTS</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Willow-sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 9 -->
-            <div class="channel-card">
-                <img src="logos/a-sports.png" alt="A-Sports Logo" class="channel-logo">
-                <h3 class="channel-name">A-Sports</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/A-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 10 -->
-            <div class="channel-card">
-                <img src="logos/fox-sports.png" alt="Fox Sports Logo" class="channel-logo">
-                <h3 class="channel-name">Fox-Sports</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Fox-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
-            </div>
-
-            <!-- Channel 11 -->
-            <div class="channel-card">
-                <img src="logos/star-sports.png" alt="Star Sports Logo" class="channel-logo">
-                <h3 class="channel-name">Star-Sports</h3>
-                <div class="channel-quality">HD 1080p</div>
-                <div class="channel-language">English</div>
-                <button class="btn-tune-in btn-sm" data-url="channels/Star-Sports.html">
-                    <i class="fas fa-play"></i> Tune In
-                </button>
+            <!-- Cricket Card -->
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-baseball-ball"></i>
+                </div>
+                <h3 class="category-name">Cricket 2</h3>
+                <p class="category-matches">International matches</p>
+                <a href="channels/willow.html" class="btn btn-primary btn-sm">
+                    <i class="fas fa-play"></i>
+                    Watch Now
+                </a>
             </div>
         </div>
     </section>
@@ -293,25 +201,14 @@
             <div class="footer-column">
                 <h3>Reedstreams</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Football/NFL <i class="fas fa-chevron-right"></i></a></li>
-                    <li><a href="#">Soccer <i class="fas fa-chevron-right"></i></a></li>
-                    <li><a href="#">Basketball <i class="fas fa-chevron-right"></i></a></li>
-                    <li><a href="#">Baseball <i class="fas fa-chevron-right"></i></a></li>
-                    <li><a href="#">Tennis <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#sports-container">Football/NFL <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="#sports-container">Baseball <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="channels/Sky-Sports-Tennis.html">F1 <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="channels/Sky-Sports-Cricket.html">Cricket <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="channels/Sky-Sports-F1.html">Tennis <i class="fas fa-chevron-right"></i></a></li>
                 </ul>
             </div>
             
-            
-            <div class="footer-column">
-                <h3>Leagues</h3>
-                <ul class="footer-links">
-                    <li><a href="#">NFL <i class="fas fa-chevron-right"></i></a></li>
-                    <li><a href="#">NBA <i class="fas fa-chevron-right"></i></a></li>
-                    <li><a href="#">Premier League <i class="fas fa-chevron-right"></i></a></li>
-                    <li><a href="#">La Liga <i class="fas fa-chevron-right"></i></a></li>
-                    <li><a href="#">MLB <i class="fas fa-chevron-right"></i></a></li>
-                </ul>
-            </div>
             
             <div class="footer-column">
                 <h3>Legal</h3>
@@ -326,9 +223,8 @@
         <div class="footer-bottom">
             <div>
                 © 2025 Reedstreams. All rights reserved. | 
-                <a href="#">Privacy</a> | 
-                <a href="#">Terms</a> | 
-                <a href="#">Sitemap</a>
+                <a href="./PrivacyPolicy.html">Privacy</a> | 
+                <a href="./Terms.html">Terms</a> | 
             </div>
             <div class="datetime">
                 <i class="far fa-clock"></i>
