@@ -38,6 +38,11 @@ function formatMatchTime(match) {
 async function loadLiveMatches() {
   const sport = getQueryParam("sport");
   const matchContainer = document.querySelector("#match-list");
+  if (!matchContainer) {
+    console.error("Missing #match-list element in HTML");
+    return;
+  }
+
   matchContainer.innerHTML = "Loading matches...";
 
   if (!sport) {
@@ -54,8 +59,10 @@ async function loadLiveMatches() {
       (m) => m.sport_name?.toLowerCase() === sport.toLowerCase() && m.match_status === "LIVE"
     );
 
-    document.querySelector("#page-title").textContent =
-      `${sport[0].toUpperCase() + sport.slice(1)} - Live Matches`;
+    const pageTitle = document.querySelector("#page-title");
+    if (pageTitle) {
+      pageTitle.textContent = `${sport[0].toUpperCase() + sport.slice(1)} - Live Matches`;
+    }
 
     if (matches.length === 0) {
       matchContainer.innerHTML = `<p>No live matches currently for ${sport}.</p>`;
@@ -110,4 +117,4 @@ async function loadLiveMatches() {
   }
 }
 
-loadLiveMatches();
+document.addEventListener("DOMContentLoaded", loadLiveMatches);
