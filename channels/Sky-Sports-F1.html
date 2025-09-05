@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reedstreams - Free Live Sports Streaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="../stylechannel.css">
+    <style>
+        /* Glow animation for live icon */
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px rgba(0, 195, 255, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(0, 195, 255, 0.9), 0 0 30px rgba(255, 58, 0, 0.6); }
+            100% { text-shadow: 0 0 5px rgba(0, 195, 255, 0.7); }
+        }
+        
+        .live-icon {
+            animation: glow 2s infinite;
+            color: var(--primary);
+        }
+        
+        /* Channel info section */
+        .channel-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .channel-logo {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem;
+            border: 1px solid var(--card-border);
+        }
+        
+        .channel-details {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .channel-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--light);
+            font-family: 'Oxanium', sans-serif;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .channel-description {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Mobile alert */
+        .mobile-alert {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 14, 23, 0.95);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 1rem;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        
+        .mobile-alert p {
+            margin-bottom: 1rem;
+            color: var(--light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .mobile-alert button {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .mobile-alert {
+                display: block;
+            }
+            
+            .channel-info {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+                margin: 1rem auto;
+            }
+            
+            .channel-logo {
+                width: 80px;
+                height: 80px;
+                min-width: 80px;
+            }
+            
+            .channel-title {
+                font-size: 1.4rem;
+                white-space: normal;
+            }
+            
+            .channel-description {
+                -webkit-line-clamp: 4;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .channel-logo {
+                width: 60px;
+                height: 60px;
+                min-width: 60px;
+            }
+            
+            .channel-title {
+                font-size: 1.2rem;
+            }
+            
+            .channel-description {
+                -webkit-line-clamp: 3;
+                font-size: 0.85rem;
+            }
+            
+            .mobile-alert p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <i class="fas fa-play-circle"></i>
+                <span>Reedstreams</span>
+            </div>
+            <button class="mobile-menu-btn" id="closeMenuBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-search search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search matches...">
+        </div>
+        
+        <div class="mobile-menu-links">
+            <a href="../inex.html" style="text-decoration: underline;" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="../index.html"><i class="fas fa-futbol"></i> Football/NFL</a>
+            <a href="../index.html"><i class="fas fa-baseball-ball"></i> Baseball</a>
+            <a href="Sky-Sports-Cricket.html"><i class="fas fa-table-tennis"></i> Cricekt</a>
+            <a href="Sky-Sports-Tennis.html"><i class="fas fa-flag-checkered"></i> Formula 1</a>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <button class="mobile-menu-btn" id="openMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="../index.html" class="logo">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Reedstreams</span>
+                </a>
+            </div>
+            
+            <div class="nav-links">
+                <a href="../index.html" class="active"> Home</a>
+                <a href="../index.html"> Football/NFL</a>
+                <a href="../index.html"> Baseball</a>
+                <a href="Sky-Sports-Cricket.html">Cricket</a>
+                <a href="Sky-Sports-Tennis.html"> F1</a>
+            </div>
+            
+            <div class="user-actions">
+                <div class="search-container">
+                     <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Enter team name to search...">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <!-- Stream Section -->
+    <section class="stream-section">
+        <h1>Sky-Tennis Live <i class="ri-base-station-line live-icon"></i></h1>
+        <div class="stream-container">
+            <div class="streams">
+                <iframe id="framez" frameborder="0" marginheight="0" marginwidth="0" height="520" src="https://cdn.crichd-stop.ru/embed2.php?id=skyten" name="iframe_a" scrolling="no" width="640">Your Browser Do not Support Iframe</iframe>
+            </div>
+        </div>
+        
+        <!-- Channel Info Section -->
+        <div class="channel-info">
+            <img src="../logos/sky-sports-tenis.png" alt="Sky Sports Logo" class="channel-logo">
+            <div class="channel-details">
+                <h2 class="channel-title">Sky Sports Tennis</h2>
+                <p class="channel-description">
+                    Sky Sports Tennis is a dedicated television channel in the UK and Ireland showing live and recorded 
+                    coverage of cricket from around the world. The channel broadcasts domestic cricket from England and 
+                    Wales, including the County Championship and T20 Blast, as well as international matches involving 
+                    England and other major cricketing nations. Watch live matches with expert commentary and analysis.
+                </p>
+            </div>
+        </div>
+    </section>
+
+   <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">Free Live Sports Streaming</h2>
+            <p class="about-text">
+                There are <span class="highlight">hundreds of sports</span> and millions of people play sport every day all around the world. Even more love to watch sport and here you can watch sport <span class="highlight">free online</span> on Reedstreams.
+            </p>
+            
+            <p class="about-text">
+                Let's start with football. We cover the <span class="highlight">NCAAF</span> so you get to see the next generation. And, of course we cover all the <span class="highlight">NFL</span>. Regular season? Check. Play-offs? Check. Bowls? Check. Superbowl? Check. And it's the same for <span class="highlight">MLB, NHL, NBA</span>, etc, etc. Think of a sport… we cover it. Have you ever wanted to watch a big game but you spent ages looking for a working stream? Or worse, that live sport streaming kept buffering or stopping? The search is over, you have arrived at your destination. <span class="highlight">Reliability and quality. Guaranteed.</span>
+            </p>
+            
+            <p class="about-text">
+                Soccer is played everywhere and now you can watch it anywhere. From north to south and east to west we collect the largest number of soccer streams from every league and competition. Let's do the check test again. <span class="highlight">EPL? Check. La Liga? Check. Champions League? Check.</span> Oh boy, this is going to be a very long check list because we just cover everything.
+            </p>
+            
+            <div class="about-points">
+                <div class="about-point">
+                    <div class="point-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="point-title">Worldwide Coverage</h3>
+                    <p class="point-text">From ball sports to motorsports to combat sports, you can see it all on live streams. You are really going to need more time to watch everything we offer.</p>
+                </div>
+                
+                <div class="about-point">
+                    <div class="point-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="point-title">Updated Schedule</h3>
+                    <p class="point-text">The schedule is always being checked and updated. And most games have multiple links so you have lots of choices. Want to watch PPVs free? You got it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Reedstreams</h3>
+                <ul class="footer-links">
+                    <li><a href="../index.html">Football/NFL <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="../index.html">Baseball <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="Sky-Sports-Tennis.html">F1 <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="Sky-Sports-Cricket.html">Cricket <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="Sky-Sports-F1.html">Tennis <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="../Terms.html">Terms of Service <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="../PrivacyPolicy.html">Privacy Policy <i class="fas fa-chevron-right"></i></a></li>
+                    <li><a href="../DMCA.html">DMCA <i class="fas fa-chevron-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div>
+                © 2025 Reedstreams. All rights reserved. | 
+                <a href="../PrivacyPolicy.html">Privacy</a> | 
+                <a href="../Terms.html">Terms</a> | 
+            </div>
+            <div class="datetime">
+                <i class="far fa-clock"></i>
+                <span id="clock">Sunday, May 25, 2025 | 03:30:52 PM PKT</span>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            Reedstreams does not host any of the live stream videos playing on this site. All videos are hosted on external streaming sites that are freely available online. Please contact video hosting providers or media posters for takedown or any DMCA complaints.
+        </div>
+    </footer>
+
+
+<script>var iframe = document.getElementById("framez");
+iframe.setAttribute("sandbox", "allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-top-navigation allow-forms");</script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const openMenuBtn = document.getElementById('openMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const overlay = document.getElementById('overlay');
+
+        openMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        overlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Karachi',
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            const dateTime = now.toLocaleString('en-US', options).replace(',', '');
+            document.getElementById('clock').textContent = dateTime;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Add clear buttons for search
+        function addClearButtons() {
+            const searchContainers = document.querySelectorAll('.search-container');
+            
+            searchContainers.forEach(container => {
+                const clearBtn = container.querySelector('.clear-search');
+                const input = container.querySelector('input');
+                
+                input.addEventListener('input', (e) => {
+                    clearBtn.style.display = e.target.value ? 'block' : 'none';
+                });
+
+                clearBtn.addEventListener('click', () => {
+                    input.value = '';
+                    clearBtn.style.display = 'none';
+                });
+            });
+        }
+
+        // Check if mobile device
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            addClearButtons();
+            
+            // Show mobile alert only on mobile devices
+            if (isMobile()) {
+                document.getElementById('mobileAlert').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</htmlsky
